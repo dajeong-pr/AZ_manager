@@ -84,7 +84,15 @@ export default function BasicSection({ formData, activeChecks, onChange, onToggl
           <select
             name="sameDayDelivery"
             value={formData.sameDayDelivery}
-            onChange={onChange}
+            // onChange={onChange}
+            onChange={(e) => {
+              onChange(e);
+              if (e.target.value === 'O') {
+                onToggleCheck('sameDayCutoff', true);
+              } else {
+                onToggleCheck('sameDayCutoff', false);
+              } 
+            }}
             className="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-xs outline-none focus:ring-2 focus:ring-emerald-500"
           >
             {/* <option value=""></option> */}
