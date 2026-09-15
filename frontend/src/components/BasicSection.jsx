@@ -5,7 +5,7 @@ export default function BasicSection({ formData, activeChecks, onChange, onToggl
     <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 shadow-sm space-y-4">
       <div className="flex items-center justify-between border-b border-slate-800 pb-2">
         <h2 className="text-sm font-bold text-teal-400 flex items-center gap-2">
-          {/* <span>2.</span> 세부 1: 기본 및 유입 설정 */}
+          <span>2.</span> 세부 1: 기본 및 유입 설정
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
