@@ -16,10 +16,7 @@ export default function Header({
         </div>
         <div>
           <h1 className="text-lg font-bold tracking-tight text-white flex items-center gap-2">
-            가구매 캠페인 매니저
-            <span className="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-0.5 rounded-full font-semibold uppercase">
-              React Modular
-            </span>
+            가구매 매니저
           </h1>
           <p className="text-xs text-slate-400">실시간 표준 규격 생성 & DB 접수 관리 대시보드</p>
         </div>

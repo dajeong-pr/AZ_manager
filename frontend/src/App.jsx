@@ -5,7 +5,8 @@ import { formatDateMMDD, formatTimeHHMM } from './utils/formatters';
 import Header from './components/Header';
 import SalesSection from './components/SalesSection';
 import BasicSection from './components/BasicSection';
-import DetailSection from './components/DetailSection';
+import DeliverySection from './components/DeliverySection';
+import ReviewSection from './components/ReviewSection';
 import OutputConsole from './components/OutputConsole';
 import HistoryTable from './components/HistoryTable';
 
@@ -52,7 +53,19 @@ export default function App() {
       const c = formData.courier === "__custom__" ? formData.customCourier : formData.courier;
       lines.push("▶ 해당 스토어 출고 택배사 : " + (c || "").trim());
     }
-    
+    if (activeChecks.use3PL) lines.push("▶ 배송대행 시스템(3PL) 사용하실지 : " + (formData.use3PL || "").trim());
+    if (activeChecks.weekendSupport) lines.push("▶ 주말 대행 여부 : " + (formData.weekendSupport || "").trim());
+    if (activeChecks.reviewOption){
+      console.log("reviewOption: ", formData.reviewOption, "customReviewOption: ", formData.customReviewOption)
+      
+      const c = (formData.reviewOption || "").trim()+" "+(formData.customReviewOption || "").trim()
+      lines.push("▶ 원고나 사진 전달 주실지 : " + c.trim());
+
+    }
+    if (activeChecks.textReviewCount) lines.push("▶ 텍스트 리뷰 수량 : " + (formData.textReviewCount || "").trim());
+    if (activeChecks.photoReviewCount) lines.push("▶ 포토 리뷰 수량 : " + (formData.photoReviewCount || "").trim());
+    if (activeChecks.ratingCount) lines.push("▶ 별점 리뷰 수량 : " + (formData.ratingCount || "").trim());
+
     return lines.join("\n");
   }, [formData, activeChecks]);
 
@@ -142,7 +155,8 @@ export default function App() {
           <div className="lg:col-span-7 space-y-4">
             <SalesSection formData={formData} activeChecks={activeChecks} onChange={handleFormChange} onToggleCheck={toggleCheck} />
             <BasicSection formData={formData} activeChecks={activeChecks} onChange={handleFormChange} onToggleCheck={toggleCheck} getDimClass={getDimClass} />
-            <DetailSection formData={formData} activeChecks={activeChecks} onChange={handleFormChange} onToggleCheck={toggleCheck} getDimClass={getDimClass} />
+            <DeliverySection formData={formData} activeChecks={activeChecks} onChange={handleFormChange} onToggleCheck={toggleCheck} getDimClass={getDimClass} />
+            <ReviewSection formData={formData} activeChecks={activeChecks} onChange={handleFormChange} onToggleCheck={toggleCheck} getDimClass={getDimClass} />
           </div>
           <div className="lg:col-span-5">
             <OutputConsole formattedOutput={formattedOutput} onCopy={handleCopy} />

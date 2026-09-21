@@ -1,12 +1,12 @@
 import React from 'react';
 import { COURIER_OPTIONS } from '../constants/campaign';
 
-export default function DetailSection({ formData, activeChecks, onChange, onToggleCheck, getDimClass }) {
+export default function DeliverySection({ formData, activeChecks, onChange, onToggleCheck, getDimClass }) {
   return (
     <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 shadow-sm space-y-4">
       <div className="flex items-center justify-between border-b border-slate-800 pb-2">
         <h2 className="text-sm font-bold text-cyan-400 flex items-center gap-2">
-          <span>3.</span> 세부 2: 옵션 · 수량 및 배송 설정
+          <span>3.</span> 세부 2 : 옵션 · 수량 및 배송 설정
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -95,6 +95,47 @@ export default function DetailSection({ formData, activeChecks, onChange, onTogg
               className="w-full mt-2 bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-xs outline-none focus:ring-2 focus:ring-emerald-500"
             />
           )}
+        </div>
+        <div className={"space-y-1 " + getDimClass("use3PL")}>
+          <div className="flex justify-between items-center">
+            <label className="text-xs text-slate-300">배송대행 시스템(3PL) 사용하실지</label>
+            <input
+              type="checkbox"
+              checked={activeChecks.use3PL}
+              onChange={() => onToggleCheck('use3PL')}
+            />
+          </div>
+          <select
+            name="use3PL"
+            value={formData.use3PL}
+            onChange={onChange}
+            className="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-xs outline-none focus:ring-2 focus:ring-emerald-500"
+          >
+            {/* <option value=""></option> */}
+            <option value="X">X</option>
+            <option value="O">O</option>
+          </select>
+        </div>
+{/* 주말 */}
+        <div className={"space-y-1 " + getDimClass("weekendSupport")}>
+          <div className="flex justify-between items-center">
+            <label className="text-xs text-slate-300">주말 대행 여부</label>
+            <input
+              type="checkbox"
+              checked={activeChecks.weekendSupport}
+              onChange={() => onToggleCheck('weekendSupport')}
+            />
+          </div>
+          <select
+            name="weekendSupport"
+            value={formData.weekendSupport}
+            onChange={onChange}
+            className="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-xs outline-none focus:ring-2 focus:ring-emerald-500"
+          >
+            {/* <option value=""></option> */}
+            <option value="X">X</option>
+            <option value="O">O</option>
+          </select>
         </div>
       </div>
     </div>

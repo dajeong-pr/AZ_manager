@@ -28,10 +28,10 @@ export const DEFAULT_ACTIVE_CHECKS = {
   courier: true,
   use3PL: true,
   weekendSupport: true,
-  photoReviewCount: false,
-  textReviewCount: false,
-  ratingCount: false,
-  reviewRatio: false
+  reviewOption: true,
+  textReviewCount: true,
+  photoReviewCount: true,
+  ratingCount: true,
 };
 
 // 폼 초기 상태
@@ -57,10 +57,8 @@ export const INITIAL_FORM_STATE = {
   customCourier: "",
   use3PL: "O",
   weekendSupport: "X",
-  photoReviewCount: "",
-  photoReviewOption: "제공",
+  reviewOption: "제공",
   textReviewCount: "",
-  textReviewOption: "자율",
+  photoReviewCount: "",
   ratingCount: "",
-  reviewRatio: ""
 };
